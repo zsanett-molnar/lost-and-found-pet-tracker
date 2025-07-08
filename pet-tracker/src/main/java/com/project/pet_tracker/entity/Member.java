@@ -1,7 +1,9 @@
 package com.project.pet_tracker.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.project.pet_tracker.utils.Role;
 import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "member")
@@ -20,6 +22,9 @@ public class Member {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
+    @Column(name = "password", nullable = false)
+    private String password;
+
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
@@ -33,11 +38,12 @@ public class Member {
     public Member() {
     }
 
-    public Member(Long id, String firstName, String lastName, String email, String phoneNumber, String address, Role role) {
+    public Member(Long id, String firstName, String lastName, String email, String password, String phoneNumber, String address, Role role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.role = role;
@@ -73,6 +79,14 @@ public class Member {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getPhoneNumber() {
