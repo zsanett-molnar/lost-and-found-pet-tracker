@@ -12,10 +12,11 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     Optional<Member> findById(Long id);
 
-    //Optional<Member> findByEmailAndPassword(String email, String password);
+    Optional<Member> findByEmail(String email);
 
     @Query("SELECT m FROM Member m WHERE m.email = :email AND m.password = :password")
     Optional<Member> findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
+
 
 
 }

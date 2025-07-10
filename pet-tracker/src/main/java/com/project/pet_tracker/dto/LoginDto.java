@@ -1,9 +1,14 @@
 package com.project.pet_tracker.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class LoginDto {
 
+    @NotBlank(message = "Email is required.")
     private String email;
 
+    @NotBlank(message = "Password is required.")
     private String password;
 
     public LoginDto(String email, String password) {
