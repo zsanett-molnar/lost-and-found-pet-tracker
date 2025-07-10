@@ -1,65 +1,36 @@
-package com.project.pet_tracker.entity;
+package com.project.pet_tracker.dto;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.project.pet_tracker.utils.Role;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
+public class RegisterDto {
 
-@Entity
-@Table(name = "member")
-public class Member {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "first_name", nullable = false)
-    @NotNull
+    @NotBlank(message = "First name required")
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
-    @NotNull
+    @NotBlank(message = "Last name required")
     private String lastName;
 
-    @Column(name = "email", nullable = false, unique = true)
-    @NotNull
+    @NotBlank(message = "Email is required")
     private String email;
 
-    @Column(name = "password", nullable = false)
-    @NotNull
+    @NotBlank(message = "Password is required")
+    @Size( min = 10)
     private String password;
 
-    @Column(name = "phone_number", nullable = false)
-    @NotNull
+    @NotBlank(message = "Phone number required")
+    @Size( min = 10, max = 12)
     private String phoneNumber;
 
-    @Column(name = "address")
     private String address;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role", nullable = false)
-    private Role role;
-
-    public Member() {
-    }
-
-    public Member(String firstName, String lastName, String email, String password, String phoneNumber, String address, Role role) {
+    public RegisterDto(String firstName, String lastName, String email, String password, String phoneNumber, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        this.role = role;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -108,13 +79,5 @@ public class Member {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 }
