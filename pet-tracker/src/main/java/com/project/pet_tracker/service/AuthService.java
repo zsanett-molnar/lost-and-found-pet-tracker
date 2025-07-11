@@ -3,7 +3,7 @@ package com.project.pet_tracker.service;
 import com.project.pet_tracker.dto.LoginDto;
 import com.project.pet_tracker.dto.RegisterDto;
 import com.project.pet_tracker.entity.Member;
-import com.project.pet_tracker.repository.MemberRepository;
+import com.project.pet_tracker.repository.IMemberRepository;
 import com.project.pet_tracker.utils.Role;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,10 +16,10 @@ import java.util.Optional;
 public class AuthService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthService.class);
-    private final MemberRepository memberRepository;
+    private final IMemberRepository memberRepository;
 
     @Autowired
-    public AuthService(MemberRepository memberRepository) {
+    public AuthService(IMemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 

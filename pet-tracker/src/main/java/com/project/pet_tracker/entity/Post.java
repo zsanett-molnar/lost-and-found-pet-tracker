@@ -18,10 +18,10 @@ public class Post {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "pet_id")
     private Pet pet;
-
+*/
     @Column(name = "description")
     private String description;
 
@@ -41,10 +41,8 @@ public class Post {
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
 
-    public Post(Long id, Member member, Pet pet, String description, PostType postType, Double latitude, Double longitude, LocalDateTime createdAt, List<Comment> comments) {
-        this.id = id;
+    public Post(Member member, String description, PostType postType, Double latitude, Double longitude, LocalDateTime createdAt, List<Comment> comments) {
         this.member = member;
-        this.pet = pet;
         this.description = description;
         this.postType = postType;
         this.latitude = latitude;
@@ -67,14 +65,6 @@ public class Post {
 
     public void setMember(Member member) {
         this.member = member;
-    }
-
-    public Pet getPet() {
-        return pet;
-    }
-
-    public void setPet(Pet pet) {
-        this.pet = pet;
     }
 
     public String getDescription() {
