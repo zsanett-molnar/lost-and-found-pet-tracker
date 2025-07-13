@@ -29,13 +29,17 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(Long id, String content, Member member, Post post, LocalDateTime createdAt) {
-        this.id = id;
+    public Comment(String content, Member member, Post post) {
         this.content = content;
         this.member = member;
         this.post = post;
-        this.createdAt = createdAt;
     }
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
+
 
     public Long getId() {
         return id;

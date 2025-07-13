@@ -5,8 +5,8 @@ import com.project.pet_tracker.dto.RegisterDto;
 import com.project.pet_tracker.dto.UpdatePostDto;
 import com.project.pet_tracker.entity.Member;
 import com.project.pet_tracker.entity.Post;
+import com.project.pet_tracker.repository.IMemberRepository;
 import com.project.pet_tracker.repository.IPostRepository;
-import com.project.pet_tracker.repository.MemberRepository;
 import com.project.pet_tracker.utils.GeoCalculation;
 import com.project.pet_tracker.utils.Role;
 import jakarta.persistence.EntityNotFoundException;
@@ -24,9 +24,9 @@ public class PostService {
     private final IPostRepository postRepository;
 
     @Autowired
-    private final MemberRepository memberRepository;
+    private final IMemberRepository memberRepository;
 
-    public PostService(IPostRepository postRepository, MemberRepository memberRepository) {
+    public PostService(IPostRepository postRepository, IMemberRepository memberRepository) {
         this.postRepository = postRepository;
         this.memberRepository = memberRepository;
     }
