@@ -2,6 +2,8 @@ package com.project.pet_tracker.entity;
 
 import com.project.pet_tracker.utils.PostType;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import java.time.LocalDateTime;
@@ -18,10 +20,11 @@ public class Post {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
-    /*@ManyToOne
+
+/*    @ManyToOne
     @JoinColumn(name = "pet_id")
-    private Pet pet;
-*/
+    private Pet pet;*/
+
     @Column(name = "description")
     private String description;
 
@@ -36,19 +39,26 @@ public class Post {
     private Double longitude;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
 
-    public Post(Member member, String description, PostType postType, Double latitude, Double longitude, LocalDateTime createdAt, List<Comment> comments) {
+
+    public Post() {}
+
+    public Post(Member member, String description, PostType postType, Double latitude, Double longitude) {
         this.member = member;
         this.description = description;
         this.postType = postType;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.createdAt = createdAt;
-        this.comments = comments;
+        this.comments = new ArrayList<>();
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
     }
 
     public Long getId() {
