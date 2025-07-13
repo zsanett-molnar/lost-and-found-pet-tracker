@@ -2,7 +2,7 @@ package com.project.pet_tracker.service;
 
 import com.project.pet_tracker.dto.UpdateMemberDto;
 import com.project.pet_tracker.entity.Member;
-import com.project.pet_tracker.repository.MemberRepository;
+import com.project.pet_tracker.repository.IMemberRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +14,10 @@ import java.util.Optional;
 public class MemberService {
 
     @Autowired
-    private final MemberRepository memberRepository;
+    private final IMemberRepository memberRepository;
 
 
-    public MemberService(MemberRepository memberRepository) {
+    public MemberService(IMemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 

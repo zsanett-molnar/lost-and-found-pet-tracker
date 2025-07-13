@@ -20,6 +20,7 @@ public class Post {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
+
 /*    @ManyToOne
     @JoinColumn(name = "pet_id")
     private Pet pet;*/
@@ -42,6 +43,7 @@ public class Post {
 
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
+
 
     public Post() {}
 
