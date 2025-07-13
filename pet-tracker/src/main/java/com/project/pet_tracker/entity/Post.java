@@ -43,6 +43,8 @@ public class Post {
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
 
+    public Post() {}
+
     public Post(Member member, String description, PostType postType, Double latitude, Double longitude) {
         this.member = member;
         this.description = description;
